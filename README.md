@@ -1,86 +1,40 @@
-# REAL-ESTATE-MNANAGEMENT-SYSTEM
-This is my sem 3 java project 
+# Real Estate Management System
 
+## Overview
+This is a Java-based Real Estate Management System that allows users to manage properties, tenants, and rentals using a console-based interface. The system uses MySQL for data storage and JDBC for database connectivity.
 
-# 📌 Real Estate Management System (Java + MySQL)
+## Core Features
+- Add, view, update, and delete properties
+- Add tenants and assign tenants to properties
+- View rental history
+- Search properties by type and availability
 
-This project is a **console-based Real Estate Management System** implemented in **Java** using **JDBC (Java Database Connectivity)** and **MySQL**.  
-It allows basic property, tenant, and rental management operations through a simple menu-driven interface.
+## Review 2 Enhancements
+- Implemented input validation for all user inputs
+- Added exception handling to prevent system crashes
+- Improved robustness against invalid data
+- Ensured smooth integration between modules
+- Enhanced code readability and structure
 
-This project is suitable for **college assignments, Java practice, or learning JDBC + MySQL integration**.
+## Technologies Used
+- Java
+- MySQL
+- JDBC
+- VS Code
 
----
+## How to Run the Project
+1. Open the project in VS Code
+2. Ensure MySQL is running and database is configured
+3. Run `RealEstateSystemApp.java`
+4. Follow the on-screen menu instructions
 
-## 🚀 Features
+## Validation & Error Handling
+- Menu input validation
+- Price and numeric input validation
+- Empty field checks
+- Database exception handling
 
-### 🏠 Property Management
-- Add new properties  
-- View all properties  
-- Update property details (address, type, price, availability)  
-- Delete a property  
-- Search properties using:
-  - Property type  
-  - Availability status  
-
-### 👤 Tenant Management
-- Add new tenants  
-- View tenant information (via rentals)  
-
-### 🔑 Rental Management
-- Assign a tenant to a property  
-- Mark property as occupied  
-- Automatically records start date of rental  
-- View all rental histories (including ongoing rentals)  
-
----
-
-### **Property.java**
-Represents a property with fields like:  
-`propId`, `address`, `propType`, `price`, `available`.
-
-### **Tenant.java**  
-Represents a tenant with:  
-`tenantId`, `name`, `contact`.
-
-### **RealEstateSystem.java**  
-Handles all **database operations** (CRUD) using JDBC:  
-- Insert / update / delete  
-- Search  
-- Join queries  
-- Transaction handling for assignments  
-
-### **RealEstateSystemApp.java**  
-Provides a **menu-based console interface** for the user.
-
----
-
-## 🔧 Technologies Used
-- **Java (Core Java, OOP)**
-- **JDBC**
-- **MySQL Database**
-- **SQL (CRUD + Joins + Transactions)**
-
----
-
-
-## ✅ What This Project Demonstrates
-
-- Practical understanding of **Object-Oriented Programming**
-- Ability to use **JDBC** to interact with a real database
-- Working knowledge of **CRUD operations**
-- Usage of **SQL joins**, **transactions**, and **prepared statements**
-- A complete **console-based management system**
-
-This makes the project perfect for:
-
-✔ **Academic submissions**  
-✔ **Portfolio projects**  
-✔ **JDBC practice**  
-✔ **Beginners learning database connectivity in Java**
-
-
-
-## 📝 Summary
-
-The Real Estate Management System is a simple yet effective Java–MySQL project designed to demonstrate core programming concepts such as OOP, JDBC connectivity, SQL operations, and console-based application design. It provides essential features for managing properties, tenants, and rentals while maintaining clean code structure and practical database interactions. This project serves as a solid foundation for beginners and can be expanded into a more advanced real estate platform in the future.
-
+## Future Enhancements
+- GUI-based interface
+- User authentication
+- Payment integration
