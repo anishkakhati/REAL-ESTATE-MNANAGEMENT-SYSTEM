@@ -374,8 +374,10 @@ class RealEstateSystem {
 
 public class RealEstateSystemApp {
     public static void main(String[] args) {
+
         RealEstateSystem system = new RealEstateSystem();
         Scanner scanner = new Scanner(System.in);
+
         while (true) {
             System.out.println("\n--- Real Estate Management System ---");
             System.out.println("1. Add Property");
@@ -388,73 +390,142 @@ public class RealEstateSystemApp {
             System.out.println("8. Search Properties");
             System.out.println("9. Exit");
             System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+
+            // ✅ SAFE MENU INPUT
+            int choice;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+                continue;
+            }
 
             switch (choice) {
+
                 case 1:
                     System.out.print("Property ID: ");
                     String propId = scanner.nextLine();
+
                     System.out.print("Address: ");
                     String address = scanner.nextLine();
+
                     System.out.print("Type (e.g., Apartment): ");
                     String propType = scanner.nextLine();
+
+                    if (propId.isEmpty() || address.isEmpty() || propType.isEmpty()) {
+                        System.out.println("All property fields are required.");
+                        break;
+                    }
+
                     System.out.print("Price: ");
-                    double price = scanner.nextDouble();
-                    scanner.nextLine(); // Consume newline
+                    double price;
+                    try {
+                        price = Double.parseDouble(scanner.nextLine());
+                        if (price <= 0) {
+                            System.out.println("Price must be greater than zero.");
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid price. Please enter a number.");
+                        break;
+                    }
+
                     system.addProperty(propId, address, propType, price);
                     break;
+
                 case 2:
                     system.viewProperties();
                     break;
+
                 case 3:
                     System.out.print("Property ID: ");
                     propId = scanner.nextLine();
+
                     System.out.print("Field to update (address, proptype, price, available): ");
                     String field = scanner.nextLine();
+
                     System.out.print("New value: ");
                     String value = scanner.nextLine();
+
+                    if (propId.isEmpty() || field.isEmpty() || value.isEmpty()) {
+                        System.out.println("Update inputs cannot be empty.");
+                        break;
+                    }
+
                     system.updateProperty(propId, field, value);
                     break;
+
                 case 4:
                     System.out.print("Property ID: ");
                     propId = scanner.nextLine();
+
+                    if (propId.isEmpty()) {
+                        System.out.println("Property ID cannot be empty.");
+                        break;
+                    }
+
                     system.deleteProperty(propId);
                     break;
+
                 case 5:
                     System.out.print("Tenant ID: ");
                     String tenantId = scanner.nextLine();
+
                     System.out.print("Name: ");
                     String name = scanner.nextLine();
+
                     System.out.print("Contact: ");
                     String contact = scanner.nextLine();
+
+                    if (tenantId.isEmpty() || name.isEmpty() || contact.isEmpty()) {
+                        System.out.println("All tenant fields are required.");
+                        break;
+                    }
+
                     system.addTenant(tenantId, name, contact);
                     break;
+
                 case 6:
                     System.out.print("Property ID: ");
                     propId = scanner.nextLine();
+
                     System.out.print("Tenant ID: ");
                     tenantId = scanner.nextLine();
+
+                    if (propId.isEmpty() || tenantId.isEmpty()) {
+                        System.out.println("Property ID and Tenant ID are required.");
+                        break;
+                    }
+
                     system.assignTenant(propId, tenantId);
                     break;
+
                 case 7:
                     system.viewRentals();
                     break;
+
                 case 8:
                     System.out.print("Property type (leave blank for any): ");
                     propType = scanner.nextLine();
                     if (propType.isEmpty()) propType = null;
+
                     System.out.print("Available (true/false, leave blank for any): ");
                     String availInput = scanner.nextLine();
                     Boolean available = availInput.isEmpty() ? null : Boolean.parseBoolean(availInput);
+
                     system.searchProperties(propType, available);
                     break;
+
                 case 9:
+                    System.out.println("Exiting system...");
                     scanner.close();
                     System.exit(0);
+
                 default:
                     System.out.println("Invalid choice.");
             }
         }
     }
 }
+
+
